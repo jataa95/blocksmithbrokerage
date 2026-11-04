@@ -68,7 +68,7 @@ export function Services() {
                         isOpen ? "opacity-100 delay-150" : "opacity-0"
                       }`}
                     >
-                      <div className="relative hidden aspect-[4/3] w-full max-w-[320px] overflow-hidden rounded-[4px] md:block">
+                      <div className="photo relative hidden aspect-[4/3] w-full max-w-[320px] overflow-hidden rounded-[4px] md:block">
                         <Image src={s.image} alt="" fill sizes="320px" className="object-cover" />
                       </div>
                       <ul className="grid content-start gap-x-8 gap-y-2 text-[14px] text-ink/80 sm:grid-cols-2">

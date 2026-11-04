@@ -77,7 +77,7 @@ export function Footer() {
 
   return (
     <footer id="contact" className="relative overflow-hidden bg-night pt-[12vw] text-white">
-      <Image src="/images/towers.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20" />
+      <Image src="/images/towers.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20 grayscale" />
       <div className="absolute inset-0 bg-gradient-to-b from-night/40 via-night/70 to-night" />
 
       <div className="relative px-4 sm:px-6">

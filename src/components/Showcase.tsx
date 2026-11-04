@@ -55,7 +55,7 @@ export function Showcase() {
           />
         </div>
 
-        <div ref={frameRef} className="absolute inset-0 overflow-hidden will-change-[clip-path]">
+        <div ref={frameRef} className="photo absolute inset-0 overflow-hidden will-change-[clip-path]">
           <div ref={imageRef} className="absolute inset-0 will-change-transform">
             <Image src="/images/lounge.jpg" alt="A sunlit living room with timber floors" fill sizes="100vw" className="object-cover" />
           </div>

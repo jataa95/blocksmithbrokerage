@@ -37,8 +37,8 @@ export function Hero() {
   const next = (index + 1) % heroSlides.length;
 
   return (
-    <section ref={sectionRef} id="top" className="relative h-[100svh] min-h-[620px] overflow-hidden bg-night text-white">
-      <div ref={mediaRef} className="absolute inset-0 will-change-transform">
+    <section ref={sectionRef} id="top" className="photo-hover relative h-[100svh] min-h-[620px] overflow-hidden bg-night text-white">
+      <div ref={mediaRef} className="photo absolute inset-0 will-change-transform">
         {heroSlides.map((src, i) => (
           <div key={src} className={`slide absolute inset-0 overflow-hidden ${i === index ? "is-active" : ""}`}>
             <Image src={src} alt="" fill sizes="100vw" preload={i === 0} className="object-cover" />

@@ -36,7 +36,7 @@ export function Listings() {
         {item.images.map((_, i) => (
           <div
             key={i}
-            className={`fade-up relative aspect-[4/3] overflow-hidden sm:aspect-auto sm:h-[clamp(240px,30vw,520px)] ${inView ? "is-in" : ""} ${
+            className={`photo fade-up relative aspect-[4/3] overflow-hidden sm:aspect-auto sm:h-[clamp(240px,30vw,520px)] ${inView ? "is-in" : ""} ${
               i !== 1 ? "hidden sm:block" : ""
             }`}
             style={{ "--d": `${i * 110}ms` } as CSSProperties}

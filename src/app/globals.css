@@ -184,7 +184,22 @@ html.lenis body {
 }
 .reading-icon.is-read {
   opacity: 1;
+}
+.reading-icon:hover {
   filter: none;
+}
+
+/* ---------- Photography: greyscale, colour on hover ---------- */
+.photo img {
+  filter: grayscale(1);
+  transition:
+    filter 900ms var(--ease-out),
+    opacity 1400ms var(--ease-out),
+    transform 1100ms var(--ease-out);
+}
+.photo:hover img,
+.photo-hover:hover .photo img {
+  filter: grayscale(0);
 }
 
 /* ---------- Letter ripple ---------- */

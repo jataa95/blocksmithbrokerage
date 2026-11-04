@@ -106,7 +106,7 @@ export function Menu() {
           </nav>
 
           <div
-            className={`relative hidden aspect-[4/5] h-[min(78vh,760px)] overflow-hidden transition-[clip-path,opacity] duration-[1000ms] ease-[var(--ease-out)] lg:block ${
+            className={`photo relative hidden aspect-[4/5] h-[min(78vh,760px)] overflow-hidden transition-[clip-path,opacity] duration-[1000ms] ease-[var(--ease-out)] lg:block ${
               open ? "opacity-100 [clip-path:inset(0_0_0_0)]" : "opacity-0 [clip-path:inset(0_0_100%_0)]"
             }`}
             style={{ transitionDelay: open ? "200ms" : "0ms" }}

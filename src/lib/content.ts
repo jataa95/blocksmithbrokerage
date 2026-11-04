@@ -16,11 +16,12 @@ export const brand = {
 };
 
 export const nav = [
-  { label: "Home", href: "#top", image: "/images/interior-lounge.jpg" },
-  { label: "Services", href: "#services", image: "/images/interior-kitchen.jpg" },
-  { label: "Listings", href: "#listings", image: "/images/interior-pool.jpg" },
-  { label: "About", href: "#about", image: "/images/interior-chandelier.jpg" },
-  { label: "Contact", href: "#contact", image: "/images/interior-bath.jpg" },
+  { label: "Home", href: "/", image: "/images/interior-lounge.jpg" },
+  { label: "Listings", href: "/listings", image: "/images/listing-vgc-5bed.jpg" },
+  { label: "Services", href: "/services", image: "/images/interior-kitchen.jpg" },
+  { label: "About", href: "/about", image: "/images/interior-chandelier.jpg" },
+  { label: "FAQs", href: "/faqs", image: "/images/interior-bath.jpg" },
+  { label: "Contact", href: "/contact", image: "/images/interior-pool.jpg" },
 ];
 
 export const heroSlides = [

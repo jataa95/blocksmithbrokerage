@@ -1,10 +1,10 @@
-import { Cta, Footer } from "@/components/Closing";
+import { Cta } from "@/components/Closing";
 import { Hero } from "@/components/Hero";
 import { Listings } from "@/components/Listings";
 import { Services } from "@/components/Services";
 import { Showcase } from "@/components/Showcase";
 import { Statement } from "@/components/Statement";
-import { Faq, Testimonials } from "@/components/Voices";
+import { Testimonials } from "@/components/Voices";
 
 export default function Home() {
   return (
@@ -15,9 +15,7 @@ export default function Home() {
       <Listings />
       <Services />
       <Testimonials />
-      <Faq />
       <Cta />
-      <Footer />
     </main>
   );
 }

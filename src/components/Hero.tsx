@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { brand, heroSlides } from "@/lib/content";
 import { clamp, useScrollFrame } from "@/hooks/motion";
@@ -49,9 +50,9 @@ export function Hero() {
 
       {/* Top bar */}
       <div className="relative z-10 flex items-start justify-between px-4 pt-6 sm:px-6 sm:pt-7">
-        <a href="#top" aria-label={`${brand.legalName} — home`}>
+        <Link href="/" aria-label={`${brand.legalName} — home`}>
           <Logo className="h-11 sm:h-12" />
-        </a>
+        </Link>
         <p className="t-micro absolute left-1/2 top-8 hidden -translate-x-1/2 md:block">{brand.tagline}</p>
       </div>
 

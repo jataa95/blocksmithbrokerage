@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Inter_Tight } from "next/font/google";
+import { Footer } from "@/components/Closing";
 import { Cursor } from "@/components/Cursor";
 import { Intro } from "@/components/Intro";
 import { Menu } from "@/components/Menu";
@@ -19,7 +20,10 @@ const interTight = Inter_Tight({
 });
 
 export const metadata: Metadata = {
-  title: "Blocsmith Brokerage — Luxury Real Estate in Lagos",
+  title: {
+    default: "Blocsmith Brokerage — Luxury Real Estate in Lagos",
+    template: "%s — Blocsmith Brokerage",
+  },
   description:
     "Luxury sales, acquisitions, leasing and advisory across Ikoyi, Lekki, Victoria Island and Banana Island.",
 };
@@ -41,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Intro />
         <Menu />
         {children}
+        <Footer />
         <SmoothScroll />
         <Cursor />
       </body>

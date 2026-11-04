@@ -1,6 +1,7 @@
 "use client";
 
 import Lenis from "lenis";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 declare global {
@@ -11,6 +12,13 @@ declare global {
 
 /** Lenis smooth scrolling, plus smooth in-page anchor links. */
 export function SmoothScroll() {
+  const pathname = usePathname();
+
+  // New page: jump to the top without easing.
+  useEffect(() => {
+    window.__lenis?.scrollTo(0, { immediate: true, force: true });
+  }, [pathname]);
+
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const lenis = new Lenis({ duration: 1.15, easing: (t) => 1 - Math.pow(1 - t, 4) });
@@ -24,6 +32,7 @@ export function SmoothScroll() {
       const a = (e.target as Element).closest<HTMLAnchorElement>('a[href^="#"]');
       if (!a) return;
       const id = a.getAttribute("href")!;
+      if (id === "#") return;
       const target = id === "#top" ? 0 : document.querySelector<HTMLElement>(id);
       if (target === null) return;
       e.preventDefault();

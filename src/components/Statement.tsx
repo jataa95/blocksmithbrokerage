@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { stats } from "@/lib/content";
 import { range, useInView, useScrollFrame } from "@/hooks/motion";
@@ -24,7 +25,7 @@ const tokens: Token[] = statement.flatMap<Token>((part) =>
     : [{ type: "icon" as const, src: part.icon }],
 );
 
-export function Statement() {
+export function Statement({ link = true }: { link?: boolean }) {
   const textRef = useRef<HTMLParagraphElement>(null);
   const [read, setRead] = useState(0);
 
@@ -38,7 +39,7 @@ export function Statement() {
   });
 
   return (
-    <section id="about" className="bg-white px-4 pb-[12vw] pt-[8vw] sm:px-6">
+    <section className="bg-white px-4 pb-[12vw] pt-[8vw] sm:px-6">
       <div className="grid gap-8 md:grid-cols-[22%_1fr]">
         <h2 className="t-label flex items-center gap-4 text-ink/70 md:pt-4">
           <span className="h-px w-10 bg-ink/20" />
@@ -66,6 +67,13 @@ export function Statement() {
           <Stat key={s.label} {...s} delay={i * 120} />
         ))}
       </div>
+      {link && (
+        <div className="mt-12 md:ml-[22%]">
+          <Link href="/about" className="capsule text-ink hover:bg-ink hover:text-white">
+            About Blocsmith
+          </Link>
+        </div>
+      )}
     </section>
   );
 }

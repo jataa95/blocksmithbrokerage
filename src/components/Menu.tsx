@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState, type CSSProperties } from "react";
 import { brand, nav } from "@/lib/content";
 import { Logo } from "./Logo";
@@ -11,6 +13,7 @@ import { lockScroll } from "./SmoothScroll";
 export function Menu() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
+  const pathname = usePathname();
 
   useEffect(() => {
     lockScroll(open);
@@ -69,31 +72,35 @@ export function Menu() {
           onClick={() => setOpen(false)}
           className={`absolute inset-0 bg-night/55 backdrop-blur-xl transition-opacity duration-700 ${open ? "opacity-100" : "opacity-0"}`}
         />
-        <a
-          href="#top"
+        <Link
+          href="/"
           onClick={() => setOpen(false)}
           aria-label={`${brand.legalName} — home`}
           className={`absolute left-4 top-4 z-10 transition-opacity duration-700 sm:left-6 sm:top-5 ${open ? "opacity-100 delay-300" : "opacity-0"}`}
         >
           <Logo className="h-10" />
-        </a>
+        </Link>
         <div className="relative flex h-full flex-col gap-6 overflow-y-auto px-4 pb-8 pt-20 sm:px-8 lg:flex-row lg:items-center lg:gap-4 lg:px-[4vw] lg:pt-8">
           <nav aria-label="Main" className="flex w-full flex-col gap-2 lg:w-[26vw] lg:min-w-[340px]">
             {nav.map((item, i) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
+                aria-current={pathname === item.href ? "page" : undefined}
                 onClick={() => setOpen(false)}
                 onPointerEnter={() => setActive(i)}
                 onFocus={() => setActive(i)}
-                className={`group/link flex items-center justify-between px-5 py-3 font-display text-[clamp(40px,4.4vw,76px)] leading-[1.05] tracking-[-0.03em] transition-[transform,opacity,background-color] duration-[800ms] ease-[var(--ease-out)] ${
+                className={`group/link flex items-center justify-between px-5 py-3 font-display text-[clamp(34px,3.9vw,66px)] leading-[1.05] tracking-[-0.03em] transition-[transform,opacity,background-color] duration-[800ms] ease-[var(--ease-out)] ${
                   i % 2 ? "bg-accent text-white" : "bg-ivory text-ink"
                 } ${open ? "translate-x-0 opacity-100" : "-translate-x-[110%] opacity-0"}`}
                 style={{ transitionDelay: open ? `${80 + i * 60}ms` : `${(nav.length - i) * 30}ms` } as CSSProperties}
               >
-                {item.label}
+                <span className="flex items-center gap-3">
+                  {item.label}
+                  {pathname === item.href && <span className="size-2 rounded-full bg-current" aria-hidden="true" />}
+                </span>
                 <ArrowUpRight className="size-[0.6em] transition-transform duration-500 ease-[var(--ease-spring)] group-hover/link:rotate-45" />
-              </a>
+              </Link>
             ))}
             <div
               className={`mt-4 flex flex-col gap-1 text-sm text-white/80 transition-opacity duration-700 ${open ? "opacity-100 delay-500" : "opacity-0"}`}

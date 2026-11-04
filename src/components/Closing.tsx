@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { brand, nav } from "@/lib/content";
 import { ArrowUpRight, FadeUp, MaskText } from "./Reveal";
@@ -34,9 +35,9 @@ export function Cta() {
           </FadeUp>
         </div>
         <div className="flex justify-center md:justify-end md:pr-[6vw]" onPointerMove={onMove} onPointerLeave={onLeave}>
-          <a
+          <Link
             ref={cardRef}
-            href="#contact"
+            href="/contact"
             className="group relative flex aspect-[3/4] w-[min(64vw,280px)] flex-col justify-between overflow-hidden rounded-[6px] bg-accent p-6 text-white shadow-[0_40px_80px_-30px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out [transform:perspective(900px)_rotateY(-14deg)_rotateX(6deg)_rotateZ(-4deg)]"
           >
             <Image src="/images/interior-stairs.jpg" alt="" fill sizes="280px" className="object-cover opacity-25 mix-blend-luminosity" />
@@ -47,7 +48,7 @@ export function Cta() {
                 Book a viewing <ArrowUpRight className="size-3.5" />
               </span>
             </span>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="curve-down absolute -bottom-[5vw] left-0 h-[5vw] w-full bg-white" />
@@ -76,7 +77,7 @@ export function Footer() {
   const [sent, setSent] = useState(false);
 
   return (
-    <footer id="contact" className="relative overflow-hidden bg-night pt-[12vw] text-white">
+    <footer className="relative overflow-hidden bg-night pt-[12vw] text-white">
       <Image src="/images/interior-hallway.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20 grayscale" />
       <div className="absolute inset-0 bg-gradient-to-b from-night/40 via-night/70 to-night" />
 
@@ -86,10 +87,10 @@ export function Footer() {
           <MaskText as="h2" text={"Let’s find your\nnext address."} className="t-display !font-medium" />
           <FadeUp delay={200} className="flex flex-col gap-5 text-[14px] md:pt-3">
             <p className="text-white/80">Sales, acquisitions, leasing and advisory across Lagos — handled personally.</p>
-            <a href={`mailto:${brand.email}`} className="group inline-flex items-center gap-3 text-[15px]">
+            <Link href="/contact" className="group inline-flex items-center gap-3 text-[15px]">
               Start a conversation
               <ArrowUpRight className="size-4 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
+            </Link>
             <div className="flex flex-col gap-1 text-[13px] text-white/60">
               <a href={`mailto:${brand.email}`} className="hover:text-white">
                 {brand.email}
@@ -132,9 +133,9 @@ export function Footer() {
           </p>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
             {nav.slice(1).map((n) => (
-              <a key={n.href} href={n.href} className="hover:text-white">
+              <Link key={n.href} href={n.href} className="hover:text-white">
                 {n.label}
-              </a>
+              </Link>
             ))}
             <a href={brand.instagram} target="_blank" rel="noreferrer" className="hover:text-white">
               Instagram
@@ -153,9 +154,7 @@ export function Footer() {
       />
 
       <div className="relative flex flex-col gap-2 px-4 pb-6 pt-8 text-[11px] text-white/50 sm:flex-row sm:justify-between sm:px-6">
-        <span className="flex items-center gap-4">
-          <Logo className="h-8 opacity-80" />© 2026 {brand.legalName}
-        </span>
+        <span>© 2026 {brand.legalName}</span>
         <span className="flex gap-5">
           <a href="#" className="hover:text-white">
             Privacy Policy

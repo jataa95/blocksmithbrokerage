@@ -72,7 +72,7 @@ export function Testimonials() {
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faqs" className="bg-white px-4 py-[10vw] sm:px-6">
+    <section className="bg-white px-4 py-[10vw] sm:px-6">
       <div className="grid gap-10 md:grid-cols-[32%_1fr]">
         <div>
           <MaskText text={"Questions,\nanswered."} className="t-h2 text-accent" />

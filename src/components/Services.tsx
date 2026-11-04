@@ -1,18 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { services } from "@/lib/content";
 import { FadeUp, MaskText } from "./Reveal";
 
 /** Editorial service rows that open to reveal scope and imagery on hover. */
-export function Services() {
+export function Services({ showAll = false, title = "Services" }: { showAll?: boolean; title?: string }) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="services" className="bg-white px-4 pb-[8vw] pt-[10vw] sm:px-6">
+    <section className="bg-white px-4 pb-[8vw] pt-[10vw] sm:px-6">
       <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-        <MaskText text="Services" className="t-display text-accent" />
+        <MaskText text={title} className="t-display text-accent" />
         <FadeUp className="max-w-[340px] text-[15px] leading-relaxed text-ink/70">
           From prime residential sales to commercial leasing, every mandate is handled with the same care, discretion and
           market insight.
@@ -79,9 +80,9 @@ export function Services() {
                           </li>
                         ))}
                       </ul>
-                      <a href="#contact" className="capsule self-start text-accent hover:bg-accent hover:text-white">
+                      <Link href="/contact" className="capsule self-start text-accent hover:bg-accent hover:text-white">
                         Enquire
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -90,6 +91,13 @@ export function Services() {
           );
         })}
       </ul>
+      {!showAll && (
+        <div className="mt-10">
+          <Link href="/services" className="capsule text-accent hover:bg-accent hover:text-white">
+            How we work
+          </Link>
+        </div>
+      )}
     </section>
   );
 }

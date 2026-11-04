@@ -1,0 +1,288 @@
+@import "tailwindcss";
+
+/*
+ * Brand tokens. Swap --accent to re-colour the whole site.
+ */
+:root {
+  --ink: #16181b;
+  --ivory: #f4f1e9;
+  --accent: #0e3b2e;
+  --accent-soft: #1d5a47;
+  --night: #0a1612;
+  --line: rgba(22, 24, 27, 0.12);
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ivory: var(--ivory);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-night: var(--night);
+  --color-line: var(--line);
+  --font-sans: var(--font-dm-sans), Arial, sans-serif;
+  --font-display: var(--font-inter-tight), var(--font-dm-sans), Arial, sans-serif;
+}
+
+html {
+  background: #fff;
+}
+
+body {
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---------- Type scale (fluid, tuned against a 1440px canvas) ---------- */
+.t-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.t-micro {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.t-hero {
+  font-family: var(--font-display);
+  font-size: clamp(72px, 12.2vw, 240px);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+.t-display {
+  font-size: clamp(52px, 7vw, 132px);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+}
+.t-h2 {
+  font-size: clamp(44px, 4.7vw, 88px);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+}
+.t-h3 {
+  font-size: clamp(36px, 4.8vw, 90px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+.t-row {
+  font-size: clamp(28px, 2.9vw, 52px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+}
+.t-statement {
+  font-size: clamp(28px, 2.85vw, 52px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+.t-lead {
+  font-size: clamp(20px, 1.75vw, 30px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Masked line entrance ---------- */
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.mask-line > span {
+  display: block;
+  transform: translate3d(0, 110%, 0);
+  transition: transform 950ms var(--ease-out);
+  transition-delay: var(--d, 0ms);
+}
+.is-in .mask-line > span {
+  transform: none;
+}
+
+/* ---------- Word entrance ---------- */
+.word-in {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 0.5em, 0);
+  transition:
+    opacity 950ms var(--ease-out),
+    transform 950ms var(--ease-out);
+  transition-delay: var(--d, 0ms);
+}
+.is-in .word-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Generic fade-up ---------- */
+.fade-up {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+  transition:
+    opacity 1050ms var(--ease-out),
+    transform 1050ms var(--ease-out);
+  transition-delay: var(--d, 0ms);
+}
+.fade-up.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Reading statement ---------- */
+.reading-word {
+  color: rgba(22, 24, 27, 0.18);
+  transition: color 420ms var(--ease-out);
+}
+.reading-word.is-read {
+  color: var(--accent);
+}
+.reading-icon {
+  display: inline-block;
+  vertical-align: -0.12em;
+  width: 1.9em;
+  height: 0.92em;
+  margin: 0 0.12em;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  opacity: 0.25;
+  filter: grayscale(1);
+  transition:
+    opacity 420ms var(--ease-out),
+    filter 420ms var(--ease-out);
+}
+.reading-icon.is-read {
+  opacity: 1;
+  filter: none;
+}
+
+/* ---------- Letter ripple ---------- */
+.ripple-letter {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ---------- Capsule buttons ---------- */
+.capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  font-size: 12px;
+  font-weight: 500;
+  transition:
+    background-color 400ms var(--ease-out),
+    color 400ms var(--ease-out),
+    border-color 400ms var(--ease-out);
+}
+.capsule svg {
+  transition: transform 500ms var(--ease-spring);
+}
+.capsule:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ---------- Hero slideshow ---------- */
+@keyframes kenburns {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.slide {
+  opacity: 0;
+  transition: opacity 1400ms var(--ease-out);
+}
+.slide.is-active {
+  opacity: 1;
+}
+.slide.is-active img {
+  animation: kenburns 7s var(--ease-out) both;
+}
+
+/* ---------- Custom cursor ---------- */
+.has-brand-cursor,
+.has-brand-cursor * {
+  cursor: none !important;
+}
+.has-brand-cursor input,
+.has-brand-cursor textarea,
+.has-brand-cursor select {
+  cursor: text !important;
+}
+
+/* ---------- Curved section edges ---------- */
+.curve-up {
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+.curve-down {
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .mask-line > span,
+  .word-in,
+  .fade-up {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Intro is skipped (before first paint) for repeat visits in a session. */
+.no-intro .bs-intro {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

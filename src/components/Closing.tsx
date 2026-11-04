@@ -132,9 +132,6 @@ export function Footer() {
             Advising worldwide.
           </p>
           <div className="flex gap-6">
-            <a href={brand.instagram} target="_blank" rel="noreferrer" className="hover:text-white">
-              Instagram
-            </a>
             <a href="#top" className="inline-flex items-center gap-1 hover:text-white">
               Back to top <ArrowUpRight className="size-3" />
             </a>

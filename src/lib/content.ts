@@ -12,7 +12,6 @@ export const brand = {
   email: "hello@blocsmithbrokerage.com",
   phone: "+234 (0) 800 000 0000",
   address: "Victoria Island, Lagos, Nigeria",
-  instagram: "https://instagram.com/",
 };
 
 export const nav = [

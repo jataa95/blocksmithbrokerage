@@ -39,12 +39,6 @@ export default function ContactPage() {
                 <p className="t-label mb-2 text-ink/50">Office</p>
                 <p>{brand.address}</p>
               </div>
-              <div>
-                <p className="t-label mb-2 text-ink/50">Social</p>
-                <a href={brand.instagram} target="_blank" rel="noreferrer" className="hover:underline">
-                  Instagram
-                </a>
-              </div>
             </FadeUp>
           </div>
           <FadeUp delay={200}>

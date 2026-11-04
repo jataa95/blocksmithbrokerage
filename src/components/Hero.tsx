@@ -15,22 +15,18 @@ export function Hero() {
   const mediaRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Video: respect reduced motion, and follow the pause button.
+  // Video: hold still for visitors who prefer reduced motion.
   useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (paused || matchMedia("(prefers-reduced-motion: reduce)").matches) v.pause();
-    else v.play().catch(() => {});
-  }, [paused]);
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) videoRef.current?.pause();
+  }, []);
 
   useEffect(() => {
-    if (heroVideo || paused) return;
+    if (heroVideo) return;
     const id = setTimeout(() => setIndex((i) => (i + 1) % heroSlides.length), SLIDE_MS);
     return () => clearTimeout(id);
-  }, [index, paused]);
+  }, [index]);
 
   // Title drifts sideways and the photo parallaxes as the hero scrolls away.
   useScrollFrame(() => {
@@ -43,8 +39,6 @@ export function Hero() {
     title.style.transform = `translate3d(${(-p * overflow).toFixed(1)}px,0,0)`;
     if (mediaRef.current) mediaRef.current.style.transform = `translate3d(0,${(scrollY * 0.35).toFixed(1)}px,0)`;
   });
-
-  const next = (index + 1) % heroSlides.length;
 
   return (
     <section ref={sectionRef} id="top" className="photo-hover relative h-[100svh] min-h-[620px] overflow-hidden bg-night text-white">
@@ -83,18 +77,7 @@ export function Hero() {
       {/* Bottom block */}
       <div className="absolute inset-x-0 bottom-[4vw] z-10">
         <div className="flex items-end justify-between gap-6 px-4 pb-6 sm:px-6">
-          <div className="flex max-w-[360px] items-center gap-4">
-            <button
-              type="button"
-              onClick={() => setPaused((p) => !p)}
-              aria-label={`${paused ? "Play" : "Pause"} ${heroVideo ? "video" : "slideshow"}`}
-              className="group relative size-12 shrink-0 overflow-hidden rounded-full ring-1 ring-white/40"
-            >
-              <Image src={heroVideo ? heroVideo.poster : heroSlides[next]} alt="" fill sizes="48px" className="object-cover transition-transform duration-700 group-hover:scale-110" />
-              <span className="absolute bottom-0 right-0 grid size-4 place-items-center rounded-full bg-ink text-[6px]">
-                {paused ? "▶" : "❚❚"}
-              </span>
-            </button>
+          <div className="max-w-[300px]">
             <p className="text-[12px] leading-[1.45] text-white/90">
               We broker, acquire and lease exceptional homes and commercial spaces across Lagos.
             </p>

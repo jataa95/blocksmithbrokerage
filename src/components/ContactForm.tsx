@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { brand, listings } from "@/lib/content";
+import { brand } from "@/lib/content";
+import { listings } from "@/lib/listings";
 import { ArrowUpRight } from "./Reveal";
 
 const field =
@@ -62,8 +63,8 @@ export function ContactForm() {
         <select name="listing" className={field} defaultValue="">
           <option value="">None in particular</option>
           {listings.map((l) => (
-            <option key={l.image} value={`${l.name}, ${l.area} (${l.price})`}>
-              {l.name}, {l.area} — {l.price}
+            <option key={l.slug} value={`${l.name}, ${l.location} (${l.ref}, ${l.price})`}>
+              {l.ref} · {l.name}, {l.location} — {l.price}
             </option>
           ))}
         </select>

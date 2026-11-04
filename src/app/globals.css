@@ -190,7 +190,8 @@ html.lenis body {
 }
 
 /* ---------- Photography: greyscale, colour on hover ---------- */
-.photo img {
+.photo img,
+.photo video {
   filter: grayscale(1);
   transition:
     filter 900ms var(--ease-out),
@@ -198,7 +199,9 @@ html.lenis body {
     transform 1100ms var(--ease-out);
 }
 .photo:hover img,
-.photo-hover:hover .photo img {
+.photo:hover video,
+.photo-hover:hover .photo img,
+.photo-hover:hover .photo video {
   filter: grayscale(0);
 }
 

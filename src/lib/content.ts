@@ -17,12 +17,21 @@ export const brand = {
 
 export const nav = [
   { label: "Home", href: "/", image: "/images/interior-lounge.jpg" },
-  { label: "Listings", href: "/listings", image: "/images/listing-vgc-5bed.jpg" },
+  { label: "Listings", href: "/listings", image: "/images/listings/vgc-5-bed-luxury-duplex/02.jpg" },
   { label: "Services", href: "/services", image: "/images/interior-kitchen.jpg" },
   { label: "About", href: "/about", image: "/images/interior-chandelier.jpg" },
   { label: "FAQs", href: "/faqs", image: "/images/interior-bath.jpg" },
   { label: "Contact", href: "/contact", image: "/images/interior-pool.jpg" },
 ];
+
+/**
+ * Aerial hero video (e.g. Third Mainland Bridge). Drop an MP4 at
+ * public/videos/hero-lagos.mp4 and set this to
+ * { src: "/videos/hero-lagos.mp4", poster: "/images/hero-living.jpg" }.
+ * While it is null the hero shows the photo slideshow below.
+ * TODO(client): supply licensed aerial footage.
+ */
+export const heroVideo: { src: string; poster: string } | null = null;
 
 export const heroSlides = [
   "/images/hero-living.jpg",
@@ -34,56 +43,6 @@ export const stats = [
   { value: 100, suffix: "+", label: "Properties sold" },
   { value: 80, suffix: "+", label: "Clients served" },
   { value: 50, suffix: "+", label: "Five-star reviews" },
-];
-
-export type Listing = {
-  name: string;
-  area: string;
-  beds: number;
-  status: string;
-  price: string;
-  title: string;
-  image: string;
-};
-
-// From the client's listing flyers. TODO(client): confirm these are still available.
-export const listings: Listing[] = [
-  {
-    name: "5 Bed Luxury Duplex",
-    area: "VGC, Lekki",
-    beds: 5,
-    status: "For sale",
-    price: "₦550M",
-    title: "Governor’s Consent / Building Approval",
-    image: "/images/listing-vgc-5bed.jpg",
-  },
-  {
-    name: "5 Bed Luxury Duplex",
-    area: "2nd Toll Gate, Lekki",
-    beds: 5,
-    status: "For sale",
-    price: "₦480M",
-    title: "Governor’s Consent / Building Approval",
-    image: "/images/listing-tollgate-5bed-a.jpg",
-  },
-  {
-    name: "5 Bed Luxury Duplex",
-    area: "2nd Toll Gate, Lekki",
-    beds: 5,
-    status: "For sale",
-    price: "₦480M",
-    title: "Governor’s Consent / Building Approval",
-    image: "/images/listing-tollgate-5bed-b.jpg",
-  },
-  {
-    name: "4 Bed Luxury Duplex",
-    area: "2nd Toll Gate, Lekki",
-    beds: 4,
-    status: "For sale",
-    price: "₦260M",
-    title: "Governor’s Consent / Building Approval",
-    image: "/images/listing-tollgate-4bed.jpg",
-  },
 ];
 
 export const services = [

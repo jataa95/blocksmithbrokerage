@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { brand, heroSlides } from "@/lib/content";
+import { brand, heroSlides, heroVideo } from "@/lib/content";
 import { clamp, useScrollFrame } from "@/hooks/motion";
 import { Logo } from "./Logo";
 import { RippleText } from "./RippleText";
@@ -16,9 +16,18 @@ export function Hero() {
   const titleRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Video: respect reduced motion, and follow the pause button.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (paused || matchMedia("(prefers-reduced-motion: reduce)").matches) v.pause();
+    else v.play().catch(() => {});
+  }, [paused]);
 
   useEffect(() => {
-    if (paused) return;
+    if (heroVideo || paused) return;
     const id = setTimeout(() => setIndex((i) => (i + 1) % heroSlides.length), SLIDE_MS);
     return () => clearTimeout(id);
   }, [index, paused]);
@@ -40,11 +49,26 @@ export function Hero() {
   return (
     <section ref={sectionRef} id="top" className="photo-hover relative h-[100svh] min-h-[620px] overflow-hidden bg-night text-white">
       <div ref={mediaRef} className="photo absolute inset-0 will-change-transform">
-        {heroSlides.map((src, i) => (
-          <div key={src} className={`slide absolute inset-0 overflow-hidden ${i === index ? "is-active" : ""}`}>
-            <Image src={src} alt="" fill sizes="100vw" preload={i === 0} className="object-cover" />
-          </div>
-        ))}
+        {heroVideo ? (
+          <video
+            ref={videoRef}
+            className="absolute inset-0 size-full object-cover"
+            src={heroVideo.src}
+            poster={heroVideo.poster}
+            muted
+            loop
+            playsInline
+            autoPlay
+            preload="auto"
+            aria-hidden="true"
+          />
+        ) : (
+          heroSlides.map((src, i) => (
+            <div key={src} className={`slide absolute inset-0 overflow-hidden ${i === index ? "is-active" : ""}`}>
+              <Image src={src} alt="" fill sizes="100vw" preload={i === 0} className="object-cover" />
+            </div>
+          ))
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/10 to-black/55" />
       </div>
 
@@ -63,10 +87,10 @@ export function Hero() {
             <button
               type="button"
               onClick={() => setPaused((p) => !p)}
-              aria-label={paused ? "Play slideshow" : "Pause slideshow"}
+              aria-label={`${paused ? "Play" : "Pause"} ${heroVideo ? "video" : "slideshow"}`}
               className="group relative size-12 shrink-0 overflow-hidden rounded-full ring-1 ring-white/40"
             >
-              <Image src={heroSlides[next]} alt="" fill sizes="48px" className="object-cover transition-transform duration-700 group-hover:scale-110" />
+              <Image src={heroVideo ? heroVideo.poster : heroSlides[next]} alt="" fill sizes="48px" className="object-cover transition-transform duration-700 group-hover:scale-110" />
               <span className="absolute bottom-0 right-0 grid size-4 place-items-center rounded-full bg-ink text-[6px]">
                 {paused ? "▶" : "❚❚"}
               </span>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
-import { brand, nav } from "@/lib/content";
+import { brand } from "@/lib/content";
 import { ArrowUpRight, FadeUp, MaskText } from "./Reveal";
 import { Logo } from "./Logo";
 import { RippleText } from "./RippleText";
@@ -131,19 +131,14 @@ export function Footer() {
             <br />
             Advising worldwide.
           </p>
-          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
-            {nav.slice(1).map((n) => (
-              <Link key={n.href} href={n.href} className="hover:text-white">
-                {n.label}
-              </Link>
-            ))}
+          <div className="flex gap-6">
             <a href={brand.instagram} target="_blank" rel="noreferrer" className="hover:text-white">
               Instagram
             </a>
             <a href="#top" className="inline-flex items-center gap-1 hover:text-white">
               Back to top <ArrowUpRight className="size-3" />
             </a>
-          </nav>
+          </div>
         </div>
       </div>
 
@@ -153,17 +148,20 @@ export function Footer() {
         strength={0.12}
       />
 
-      <div className="relative flex flex-col gap-2 px-4 pb-6 pt-8 text-[11px] text-white/50 sm:flex-row sm:justify-between sm:px-6">
+      <div className="relative flex flex-col gap-3 px-4 pb-6 pt-8 text-[11px] text-white/50 sm:flex-row sm:items-center sm:justify-between sm:px-6">
         <span>© 2026 {brand.legalName}</span>
-        <span className="flex gap-5">
-          <a href="#" className="hover:text-white">
-            Privacy Policy
-          </a>
-          <a href="#" className="hover:text-white">
-            Terms of Service
-          </a>
-        </span>
-        <LagosTime />
+        {/* One row on phones; spreads into the parent row on larger screens. */}
+        <div className="flex items-center justify-between gap-4 sm:contents">
+          <span className="flex gap-4 sm:gap-5">
+            <a href="#" className="hover:text-white">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-white">
+              Terms of Service
+            </a>
+          </span>
+          <LagosTime />
+        </div>
       </div>
     </footer>
   );

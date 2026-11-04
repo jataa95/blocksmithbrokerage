@@ -7,8 +7,8 @@ export function Logo({ tone = "light", className = "h-10" }: { tone?: "light" | 
     <Image
       src={tone === "light" ? "/logo-white.png" : "/logo-ink.png"}
       alt={brand.legalName}
-      width={668}
-      height={268}
+      width={1002}
+      height={399}
       className={`w-auto ${className}`}
     />
   );

@@ -16,18 +16,17 @@ export const brand = {
 };
 
 export const nav = [
-  { label: "Home", href: "#top", image: "/images/hero-dusk.jpg" },
-  { label: "Services", href: "#services", image: "/images/office.jpg" },
-  { label: "Listings", href: "#listings", image: "/images/villa-pool.jpg" },
-  { label: "About", href: "#about", image: "/images/living-room.jpg" },
-  { label: "Contact", href: "#contact", image: "/images/towers.jpg" },
+  { label: "Home", href: "#top", image: "/images/interior-lounge.jpg" },
+  { label: "Services", href: "#services", image: "/images/interior-kitchen.jpg" },
+  { label: "Listings", href: "#listings", image: "/images/interior-pool.jpg" },
+  { label: "About", href: "#about", image: "/images/interior-chandelier.jpg" },
+  { label: "Contact", href: "#contact", image: "/images/interior-bath.jpg" },
 ];
 
 export const heroSlides = [
-  "/images/hero-dusk.jpg",
-  "/images/villa-pool.jpg",
-  "/images/lounge.jpg",
-  "/images/courtyard-pool.jpg",
+  "/images/hero-living.jpg",
+  "/images/hero-lounge.jpg",
+  "/images/hero-kitchen.jpg",
 ];
 
 export const stats = [
@@ -39,37 +38,50 @@ export const stats = [
 export type Listing = {
   name: string;
   area: string;
-  type: string;
   beds: number;
+  status: string;
   price: string;
-  images: [string, string, string];
+  title: string;
+  image: string;
 };
 
-// TODO(client): replace with real listings and prices.
+// From the client's listing flyers. TODO(client): confirm these are still available.
 export const listings: Listing[] = [
   {
-    name: "Bourdillon Residence",
-    area: "Ikoyi",
-    type: "For sale",
+    name: "5 Bed Luxury Duplex",
+    area: "VGC, Lekki",
     beds: 5,
-    price: "₦1.2B",
-    images: ["/images/hero-dusk.jpg", "/images/living-room.jpg", "/images/timber-house.jpg"],
+    status: "For sale",
+    price: "₦550M",
+    title: "Governor’s Consent / Building Approval",
+    image: "/images/listing-vgc-5bed.jpg",
   },
   {
-    name: "Ocean Crest Villa",
-    area: "Banana Island",
-    type: "For sale",
-    beds: 6,
-    price: "₦2.4B",
-    images: ["/images/villa-pool.jpg", "/images/lounge.jpg", "/images/courtyard-pool.jpg"],
+    name: "5 Bed Luxury Duplex",
+    area: "2nd Toll Gate, Lekki",
+    beds: 5,
+    status: "For sale",
+    price: "₦480M",
+    title: "Governor’s Consent / Building Approval",
+    image: "/images/listing-tollgate-5bed-a.jpg",
   },
   {
-    name: "Admiralty Penthouse",
-    area: "Lekki Phase 1",
-    type: "For lease",
+    name: "5 Bed Luxury Duplex",
+    area: "2nd Toll Gate, Lekki",
+    beds: 5,
+    status: "For sale",
+    price: "₦480M",
+    title: "Governor’s Consent / Building Approval",
+    image: "/images/listing-tollgate-5bed-b.jpg",
+  },
+  {
+    name: "4 Bed Luxury Duplex",
+    area: "2nd Toll Gate, Lekki",
     beds: 4,
-    price: "₦85M / yr",
-    images: ["/images/white-villa.jpg", "/images/terrace-house.jpg", "/images/modern-facade.jpg"],
+    status: "For sale",
+    price: "₦260M",
+    title: "Governor’s Consent / Building Approval",
+    image: "/images/listing-tollgate-4bed.jpg",
   },
 ];
 
@@ -86,7 +98,7 @@ export const services = [
       "Architectural photography & film",
       "Negotiation through to completion",
     ],
-    image: "/images/villa-pool.jpg",
+    image: "/images/interior-double-height.jpg",
   },
   {
     title: "Acquisitions",
@@ -100,7 +112,7 @@ export const services = [
       "Access to off-market stock",
       "Transaction management",
     ],
-    image: "/images/modern-facade.jpg",
+    image: "/images/listing-tollgate-5bed-b.jpg",
   },
   {
     title: "Leasing",
@@ -114,7 +126,7 @@ export const services = [
       "Short-let & corporate lets",
       "Renewals & property management",
     ],
-    image: "/images/office.jpg",
+    image: "/images/interior-living.jpg",
   },
   {
     title: "Advisory",
@@ -128,7 +140,7 @@ export const services = [
       "Estate development advisory",
       "Portfolio review",
     ],
-    image: "/images/towers.jpg",
+    image: "/images/interior-kitchen-dark.jpg",
   },
 ];
 

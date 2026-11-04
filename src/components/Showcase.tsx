@@ -57,7 +57,7 @@ export function Showcase() {
 
         <div ref={frameRef} className="photo absolute inset-0 overflow-hidden will-change-[clip-path]">
           <div ref={imageRef} className="absolute inset-0 will-change-transform">
-            <Image src="/images/lounge.jpg" alt="A sunlit living room with timber floors" fill sizes="100vw" className="object-cover" />
+            <Image src="/images/showcase-kitchen.jpg" alt="A modern kitchen with a fluted island and warm under-cabinet lighting" fill sizes="100vw" className="object-cover" />
           </div>
           <div className="absolute inset-0 bg-black/25" />
           <div ref={finalRef} className="absolute inset-0 grid place-items-center px-6 text-center text-white opacity-0">

@@ -10,11 +10,11 @@ type Token = { type: "word"; text: string } | { type: "icon"; src: string };
 // Inline photo "pills" sit inside the sentence like illustrations.
 const statement: (string | { icon: string })[] = [
   "At Blocsmith, we believe real estate is more than property — it’s about building lasting value, one block at a time.",
-  { icon: "/images/timber-house.jpg" },
+  { icon: "/images/interior-chandelier.jpg" },
   "Based in Lagos, we connect individuals, families and investors with exceptional homes",
-  { icon: "/images/living-room.jpg" },
+  { icon: "/images/interior-kitchen-island.jpg" },
   "and commercial spaces. Guided by trust, transparency and tailored service, we stay with you at every step —",
-  { icon: "/images/towers.jpg" },
+  { icon: "/images/interior-bath-marble.jpg" },
   "whether you’re buying, leasing or investing.",
 ];
 

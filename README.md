@@ -20,4 +20,4 @@ Search for `TODO(client)` to find placeholders that must be confirmed before lau
 
 Brand colours (black, white and greys) are CSS variables at the top of `src/app/globals.css`.
 
-Placeholder photography is from Unsplash (`public/images`); replace with the client's own photos before launch.
+Photography is the client's own (`public/images`); listing exteriors are cropped from their listing flyers.

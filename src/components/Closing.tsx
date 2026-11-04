@@ -39,7 +39,7 @@ export function Cta() {
             href="#contact"
             className="group relative flex aspect-[3/4] w-[min(64vw,280px)] flex-col justify-between overflow-hidden rounded-[6px] bg-accent p-6 text-white shadow-[0_40px_80px_-30px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out [transform:perspective(900px)_rotateY(-14deg)_rotateX(6deg)_rotateZ(-4deg)]"
           >
-            <Image src="/images/white-villa.jpg" alt="" fill sizes="280px" className="object-cover opacity-25 mix-blend-luminosity" />
+            <Image src="/images/interior-stairs.jpg" alt="" fill sizes="280px" className="object-cover opacity-25 mix-blend-luminosity" />
             <span className="relative t-micro">Private viewing</span>
             <span className="relative">
               <Logo className="h-14" />
@@ -77,7 +77,7 @@ export function Footer() {
 
   return (
     <footer id="contact" className="relative overflow-hidden bg-night pt-[12vw] text-white">
-      <Image src="/images/towers.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20 grayscale" />
+      <Image src="/images/interior-hallway.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20 grayscale" />
       <div className="absolute inset-0 bg-gradient-to-b from-night/40 via-night/70 to-night" />
 
       <div className="relative px-4 sm:px-6">

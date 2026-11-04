@@ -18,6 +18,6 @@ Open http://localhost:3000.
 All copy, listings, services, FAQs and contact details live in `src/lib/content.ts`.
 Search for `TODO(client)` to find placeholders that must be confirmed before launch.
 
-Brand colours are CSS variables at the top of `src/app/globals.css` — change `--accent` to re-colour the site.
+Brand colours (black, white and greys) are CSS variables at the top of `src/app/globals.css`.
 
 Placeholder photography is from Unsplash (`public/images`); replace with the client's own photos before launch.

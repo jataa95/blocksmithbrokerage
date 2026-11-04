@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0e3b2e",
+  themeColor: "#111111",
 };
 
 // Skips the brand intro before first paint on repeat visits / reduced motion.

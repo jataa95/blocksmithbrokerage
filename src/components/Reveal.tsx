@@ -12,7 +12,9 @@ export function MaskText({
   className = "",
   delay = 0,
   stagger = 90,
+  id,
 }: {
+  id?: string;
   text: string;
   as?: Tag;
   className?: string;
@@ -23,7 +25,7 @@ export function MaskText({
   const Comp = as as ElementType;
   const lines = text.split("\n");
   return (
-    <Comp ref={ref} className={`${className} ${inView ? "is-in" : ""}`} aria-label={text.replace(/\n/g, " ")}>
+    <Comp ref={ref} id={id} className={`${className} ${inView ? "is-in" : ""}`} aria-label={text.replace(/\n/g, " ")}>
       {lines.map((line, i) => (
         <span key={i} className="mask-line" aria-hidden="true">
           <span style={{ "--d": `${delay + i * stagger}ms` } as CSSProperties}>{line}</span>

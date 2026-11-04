@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { brand, heroSlides } from "@/lib/content";
 import { clamp, useScrollFrame } from "@/hooks/motion";
+import { Logo } from "./Logo";
 import { RippleText } from "./RippleText";
 
 const SLIDE_MS = 5200;
@@ -48,9 +49,8 @@ export function Hero() {
 
       {/* Top bar */}
       <div className="relative z-10 flex items-start justify-between px-4 pt-6 sm:px-6 sm:pt-7">
-        <a href="#top" className="text-[15px] font-semibold uppercase tracking-[0.04em]">
-          {brand.name}
-          <span className="ml-1.5 align-top text-[8px] tracking-[0.2em] text-white/70">Brokerage</span>
+        <a href="#top" aria-label={`${brand.legalName} — home`}>
+          <Logo className="h-11 sm:h-12" />
         </a>
         <p className="t-micro absolute left-1/2 top-8 hidden -translate-x-1/2 md:block">{brand.tagline}</p>
       </div>

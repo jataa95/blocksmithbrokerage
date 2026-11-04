@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { brand, nav } from "@/lib/content";
 import { ArrowUpRight, FadeUp, MaskText } from "./Reveal";
+import { Logo } from "./Logo";
 import { RippleText } from "./RippleText";
 
 export function Cta() {
@@ -25,7 +26,7 @@ export function Cta() {
     <section className="relative z-10 bg-white" aria-labelledby="cta-title">
       <div className="grid items-center gap-12 px-4 pb-[6vw] pt-[8vw] sm:px-6 md:grid-cols-2">
         <div>
-          <MaskText as="h2" text={"Right address.\nRight advice."} className="t-h2 text-accent" />
+          <MaskText as="h2" id="cta-title" text={"Right address.\nRight advice."} className="t-h2 text-accent" />
           <FadeUp delay={200} className="mt-6 text-[15px] leading-relaxed text-accent">
             Tell us what you’re looking for.
             <br />
@@ -41,7 +42,7 @@ export function Cta() {
             <Image src="/images/white-villa.jpg" alt="" fill sizes="280px" className="object-cover opacity-25 mix-blend-luminosity" />
             <span className="relative t-micro">Private viewing</span>
             <span className="relative">
-              <span className="block text-[44px] font-semibold uppercase leading-[0.9] tracking-[-0.04em]">{brand.name}</span>
+              <Logo className="h-14" />
               <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/50 px-4 py-2 text-[12px] transition-colors group-hover:bg-white group-hover:text-accent">
                 Book a viewing <ArrowUpRight className="size-3.5" />
               </span>
@@ -152,7 +153,9 @@ export function Footer() {
       />
 
       <div className="relative flex flex-col gap-2 px-4 pb-6 pt-8 text-[11px] text-white/50 sm:flex-row sm:justify-between sm:px-6">
-        <span>© 2026 {brand.legalName}</span>
+        <span className="flex items-center gap-4">
+          <Logo className="h-8 opacity-80" />© 2026 {brand.legalName}
+        </span>
         <span className="flex gap-5">
           <a href="#" className="hover:text-white">
             Privacy Policy

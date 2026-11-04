@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState, type CSSProperties } from "react";
 import { brand, nav } from "@/lib/content";
+import { Logo } from "./Logo";
 import { ArrowUpRight } from "./Reveal";
 import { lockScroll } from "./SmoothScroll";
 
@@ -68,6 +69,14 @@ export function Menu() {
           onClick={() => setOpen(false)}
           className={`absolute inset-0 bg-night/55 backdrop-blur-xl transition-opacity duration-700 ${open ? "opacity-100" : "opacity-0"}`}
         />
+        <a
+          href="#top"
+          onClick={() => setOpen(false)}
+          aria-label={`${brand.legalName} — home`}
+          className={`absolute left-4 top-4 z-10 transition-opacity duration-700 sm:left-6 sm:top-5 ${open ? "opacity-100 delay-300" : "opacity-0"}`}
+        >
+          <Logo className="h-10" />
+        </a>
         <div className="relative flex h-full flex-col gap-6 overflow-y-auto px-4 pb-8 pt-20 sm:px-8 lg:flex-row lg:items-center lg:gap-4 lg:px-[4vw] lg:pt-8">
           <nav aria-label="Main" className="flex w-full flex-col gap-2 lg:w-[26vw] lg:min-w-[340px]">
             {nav.map((item, i) => (
